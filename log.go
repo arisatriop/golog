@@ -48,9 +48,19 @@ func LogStart(params ...string) {
 	logger.Println("A new process is started.")
 }
 
-func LogEnd(activity string, user string) {
+func LogEnd(params ...string) {
 	logger := initLog()
-	logger.Printf("'%s' by '%s' perfectly complete.", activity, user)
+	if len(params) == 1 {
+		logger.Printf("'%s' perfectly completed.", params[0])
+		return
+	}
+
+	if len(params) == 2 {
+		logger.Printf("'%s' by '%s' perfectly completed.", params[0], params[1])
+		return
+	}
+
+	logger.Printf("A process perfectly completed.")
 }
 
 func LogError(activity, loc, msg, user string) {

@@ -23,5 +23,15 @@ func TestLogStart(t *testing.T) {
 }
 
 func TestLogEnd(t *testing.T) {
-	LogEnd("example activity", "example users")
+	t.Run("", func(t *testing.T) {
+		LogEnd("example activity", "example users")
+	})
+
+	t.Run("", func(t *testing.T) {
+		LogEnd("example activity")
+	})
+
+	t.Run("", func(t *testing.T) {
+		LogEnd()
+	})
 }
