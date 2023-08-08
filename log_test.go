@@ -9,9 +9,19 @@ func TestLogError(t *testing.T) {
 }
 
 func TestLogStart(t *testing.T) {
-	LogStart("exmaple activity", "example users")
+	t.Run("", func(t *testing.T) {
+		LogStart("example activity", "example users")
+	})
+
+	t.Run("", func(t *testing.T) {
+		LogStart("example activity")
+	})
+
+	t.Run("", func(t *testing.T) {
+		LogStart()
+	})
 }
 
 func TestLogEnd(t *testing.T) {
-	LogEnd("exmaple activity", "example users")
+	LogEnd("example activity", "example users")
 }

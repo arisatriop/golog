@@ -33,10 +33,19 @@ func initJsonLog() *logrus.Logger {
 	return logger
 }
 
-func LogStart(activity string, user string) {
+func LogStart(params ...string) {
 	logger := initLog()
-	logger.Println()
-	logger.Printf("A new proses '%s' by '%s' is starting.", activity, user)
+	if len(params) == 1 {
+		logger.Printf("A new process '%s' is started.", params[0])
+		return
+	}
+
+	if len(params) == 2 {
+		logger.Printf("A new process '%s' by '%s' is started.", params[0], params[1])
+		return
+	}
+
+	logger.Println("A new process is started.")
 }
 
 func LogEnd(activity string, user string) {
@@ -51,9 +60,9 @@ func LogError(activity, loc, msg, user string) {
 	logger.WithFields(logrus.Fields{"activity": activity, "location": loc, "local_time": time, "user": user}).Error(msg)
 }
 
-// func LogInfo(activity, user string) {
-// 	// time := help.GetTime().Format("2006-01-02 15:04:05")
+func LogInfo(activity, user string) {
+	// time := help.GetTime().Format("2006-01-02 15:04:05")
 
-// 	logger := initLog()
-// 	logger.Info()
-// }
+	logger := initLog()
+	logger.Info()
+}
