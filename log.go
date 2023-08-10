@@ -36,12 +36,12 @@ func initJsonLog() *logrus.Logger {
 func LogStart(params ...string) {
 	logger := initLog()
 	if len(params) == 1 {
-		logger.Printf("A new process '%s' is started.", params[0])
+		logger.Printf("'%s' is started.", params[0])
 		return
 	}
 
 	if len(params) == 2 {
-		logger.Printf("A new process '%s' by '%s' is started.", params[0], params[1])
+		logger.Printf("'%s' by '%s' is started.", params[0], params[1])
 		return
 	}
 
